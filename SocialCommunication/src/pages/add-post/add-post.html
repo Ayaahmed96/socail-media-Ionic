@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Add Post</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item>
+        <ion-label floating>Post</ion-label>
+        <br> <br> <br> 
+        <ion-textarea placeholder="What's in your mind"type="text" [(ngModel)]="myproduct.PostText"></ion-textarea>
+        <button ion-button full (click)="opencamera()">open camera</button>
+        <button ion-button full (click)="opengallery()">open gallery</button>
+    </ion-item>
+      
+      <br>
+      <button ion-button block (click)="AddItem()">post</button>
+</ion-content>

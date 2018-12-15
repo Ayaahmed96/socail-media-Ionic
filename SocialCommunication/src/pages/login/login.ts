@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ToastController} from 'ionic-angular';
-import { Users } from '../../Models/Users.interface';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Person } from '../../Models/Person.interface';
 import{AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable} from 'angularfire2/database';
 import{AngularFireAuth, AngularFireAuthModule} from 'angularfire2/auth';
 
@@ -17,10 +17,10 @@ import{AngularFireAuth, AngularFireAuthModule} from 'angularfire2/auth';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  user={} as Users;
-  userref:FirebaseListObservable<Users[]>;
-  constructor(public navCtrl: NavController, public navParams: NavParams ,private database:AngularFireDatabase ,public authctrl:AngularFireAuth ,private toastctrl:ToastController) {
-    this.userref=this.database.list('users');
+  user={} as Person;
+  userref:FirebaseListObservable<Person[]>;
+  constructor(public navCtrl: NavController, public navParams: NavParams ,private database:AngularFireDatabase ,public authctrl:AngularFireAuth) {
+    this.userref=this.database.list('Persons');
   }
 
   ionViewDidLoad() {
@@ -29,25 +29,11 @@ export class LoginPage {
   login(){
     if(this.authctrl.auth.signInWithEmailAndPassword(this.user.UserEmail,this.user.Userpassword)){
       console.log(" email is :" + this.user.UserEmail +" and the password is "+this.user.Userpassword);
-      const toast=this.toastctrl.create({
-        message: "  Welcome  " +this.user.UserEmail + ", you registerd succesfully  ",
-        duration:3000,
-        showCloseButton:true,
-        closeButtonText:"ok"
-     });
-      this.navCtrl.pop();
-      toast.present();
+      this.navCtrl.push('UserInfoPage');
     }
-    else{
-      const toast=this.toastctrl.create({
-        message: " Incorrect username or password  ",
-        duration:3000,
-        showCloseButton:true,
-        closeButtonText:"ok"
-     });
-     this.navCtrl.pop();
-     toast.present();
-    }
-  
+   else{
+
+   }
   }
+ 
 }

@@ -1,0 +1,26 @@
+<!--
+  Generated template for the PersonsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Persons</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item *ngFor="let person of personlist" (click)="onitemclicked(product)">
+        <h2>person  name : {{person.UserName}}</h2>
+        <h2>person age : {{person.UserAge}}</h2>
+       
+        <br> <br>
+       
+      
+      </ion-item>
+
+</ion-content>

@@ -13,4 +13,35 @@
   </p>
   <button ion-button block (click)="Gotosignup()">Go to SignUp</button>
   <button ion-button block (click)="Gotologin()">Go to login</button>
+  
+  
+
+
+
+  <ion-card *ngFor="let posts of finlarraypost">
+    <ion-card-header>
+   
+    </ion-card-header>
+    <ion-card-content>
+      <h2>post description  : {{posts.PostText}}</h2>
+   
+        <ion-row>
+          <ion-col text-right>
+              <button ion-button  small  clear>Like</button>
+              <button ion-button  small  clear>DisLike</button>
+          </ion-col>
+        </ion-row>
+        
+    </ion-card-content>
+  
+  </ion-card>
+
+
+
+
+
+
+
+
+
 </ion-content>
